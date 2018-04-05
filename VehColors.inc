@@ -468,7 +468,13 @@ i_RandomColor(vehicleid, modelid, &color1, &color2)
                              
                              
 */
-
+//-----------------------------------------------------------------------------------------------------------------
+stock COLOR_CreateVehicle(modelid, Float:spawn_x, Float:spawn_y, Float:spawn_z, Float:z_angle, color1, color2, respawn_delay, addsiren=0)
+	return	i_process(CreateVehicle(modelid, spawn_x,spawn_y,spawn_z,z_angle, color1, color2, respawn_delay, addsiren),color1,color2);
+stock COLOR_AddStaticVehicle(modelid, Float:spawn_x, Float:spawn_y, Float:spawn_z, Float:z_angle, color1, color2)
+	return i_process(AddStaticVehicle(modelid, spawn_x,spawn_y,spawn_z,z_angle, color1, color2),color1,color2);
+stock COLOR_AddStaticVehicleEx(modelid, Float:spawn_x, Float:spawn_y, Float:spawn_z, Float:z_angle, color1, color2, respawn_delay, addsiren=0)
+	return i_process(AddStaticVehicleEx(modelid, spawn_x,spawn_y,spawn_z,z_angle, color1, color2, respawn_delay, addsiren),color1,color2);
 //-----------------------------------------------------------------------------------------------------------------
 #if defined _ALS_AddStaticVehicle
     #undef AddStaticVehicle
@@ -476,8 +482,6 @@ i_RandomColor(vehicleid, modelid, &color1, &color2)
     #define _ALS_AddStaticVehicle
 #endif
 #define AddStaticVehicle COLOR_AddStaticVehicle
-stock COLOR_AddStaticVehicle(modelid, Float:spawn_x, Float:spawn_y, Float:spawn_z, Float:z_angle, color1, color2)
-	return i_process(AddStaticVehicle(modelid, spawn_x,spawn_y,spawn_z,z_angle, color1, color2),color1,color2);
 //-----------------------------------------------------------------------------------------------------------------
 #if defined _ALS_AddStaticVehicleEx
     #undef AddStaticVehicleEx
@@ -485,8 +489,6 @@ stock COLOR_AddStaticVehicle(modelid, Float:spawn_x, Float:spawn_y, Float:spawn_
     #define _ALS_AddStaticVehicleEx
 #endif
 #define AddStaticVehicleEx COLOR_AddStaticVehicleEx
-stock COLOR_AddStaticVehicleEx(modelid, Float:spawn_x, Float:spawn_y, Float:spawn_z, Float:z_angle, color1, color2, respawn_delay, addsiren=0)
-	return i_process(AddStaticVehicleEx(modelid, spawn_x,spawn_y,spawn_z,z_angle, color1, color2, respawn_delay, addsiren),color1,color2);
 //-----------------------------------------------------------------------------------------------------------------
 #if defined _ALS_CreateVehicle
     #undef CreateVehicle
@@ -494,18 +496,16 @@ stock COLOR_AddStaticVehicleEx(modelid, Float:spawn_x, Float:spawn_y, Float:spaw
     #define _ALS_CreateVehicle
 #endif
 #define CreateVehicle COLOR_CreateVehicle
-stock COLOR_CreateVehicle(modelid, Float:spawn_x, Float:spawn_y, Float:spawn_z, Float:z_angle, color1, color2, respawn_delay, addsiren=0)
-	return	i_process(CreateVehicle(modelid, spawn_x,spawn_y,spawn_z,z_angle, color1, color2, respawn_delay, addsiren),color1,color2);
 //-----------------------------------------------------------------------------------------------------------------
+stock COLOR_ChangeVehicleColor(vehicleid, color1, color2)
+{
+	i_SaveColor(vehicleid,color1, color2);
+	return ChangeVehicleColor(vehicleid, color1, color2);
+}
 #if defined _ALS_ChangeVehicleColor
     #undef ChangeVehicleColor
 #else
     #define _ALS_ChangeVehicleColor
 #endif
 #define ChangeVehicleColor COLOR_ChangeVehicleColor
-stock ChangeVehicleColor(vehicleid, color1, color2)
-{
-	i_SaveColor(vehicleid,color1, color2);
-	return ChangeVehicleColor(vehicleid, color1, color2);
-}
 //-----------------------------------------------------------------------------------------------------------------
