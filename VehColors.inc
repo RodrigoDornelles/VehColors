@@ -340,8 +340,9 @@ static VehicleColor[MAX_VEHICLES][2];
 */
 
 
-stock ShowVehColorListForPlayer(playerid, bool:type = COLORS_DEFAULT_TYPE, &colums = COLORS_COLUMS)
+stock ShowVehColorListForPlayer(playerid, bool:type = COLORS_DEFAULT_TYPE, tcolums = COLORS_COLUMS)
 {
+	new colums=tcolums;
 	if(type == COLORS_DIALOG)
 	{
 		new str[3400]="",	//não reclame
