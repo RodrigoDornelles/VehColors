@@ -17,7 +17,7 @@
 #if !defined COLORS_DEFAULT_TYPE
 	#define COLORS_DEFAULT_TYPE COLORS_DIALOG
 #endif
-/*
+/* 
   _                                          
  | |                                         
  | | __ _ _ __   __ _ _   _  __ _  __ _  ___ 
